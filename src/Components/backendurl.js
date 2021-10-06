@@ -32,7 +32,7 @@ export async function createGame(newGames) {
 
 export async function updateGames(id, updatedGame) {
     const response = await request.put(`${URL}/games_owned/${id}`)
-    .send(updateGames)
+    .send(updatedGame)
 
     return response.body;
 }

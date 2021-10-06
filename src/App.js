@@ -25,7 +25,7 @@ export default class App extends Component {
          render={(routerProps) => <List {...routerProps} />}
          />
          <Route
-         path='/update'
+         path='/update/:id'
          exact
          render={(routerProps) => <Update {...routerProps} />}
          />

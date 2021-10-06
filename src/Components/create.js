@@ -4,8 +4,9 @@ import { createGame, getGenre } from './backendurl'
 export default class Create extends Component {
 
     state = {
-        genre: [],
+        genres: [],
         name: '',
+        genre_id: 1
 
 
     }
@@ -13,7 +14,7 @@ export default class Create extends Component {
     componentDidMount = async () => {
         const categories = await getGenre()
 
-        this.setState({ genre: categories })
+        this.setState({ genres: categories })
     }
 
     handleSubmit = async e => {
@@ -25,17 +26,23 @@ export default class Create extends Component {
     }
 
     render() {
+       
         return (
-         <form onChange={this.handleSubmit}>
+         <form onSubmit={this.handleSubmit}>
              <label>
                  Name
              <input onChange = {(e) => this.setState({ name: e.target.value })} />
              </label>
              <label>
                  Genre
-                 <input onChange = {(e) => this.setState({ genre: e.target.value })} />
+                 <select onChange = {(e) => this.setState({ genre_id: e.target.value })}>
+                     {this.state.genres.map(genre =>
+                        <option key={`${genre.genre}-${genre.id}`} value={genre.id}>
+                            {genre.genre}
+                        </option>)}
+                        </select>
              </label>
-             <button onClick="enter">Submit.</button>
+             <button>Submit</button>
              
          </form>
         )

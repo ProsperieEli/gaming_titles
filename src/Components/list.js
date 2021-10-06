@@ -1,18 +1,23 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
-import { getGamesOwned } from './backendurl'
+import { deleteGame, getGamesOwned } from './backendurl'
 
 
 export default class List extends Component {
     state= {
-        gamesOwned: []
+        gamesOwned: [],
+        
     }
 
     componentDidMount = async () => {
         const gamesOwned = await getGamesOwned();
         this.setState({ gamesOwned: gamesOwned })
     }
+    handleClick = async (id) => {
+        const getridOf = await deleteGame(id)
 
+        this.setState({ gamesOwned: getridOf })
+    }
     //Create a delete function to remove unneccessary items. Stretch.
     render() {
         const { gamesOwned } = this.state;
@@ -30,7 +35,8 @@ export default class List extends Component {
                         <div className="gaming-list">
                             <p>{name}</p>
                             <p>{genre}</p>
-                          <button onClick="remove-game">Sell.</button>
+                            <button onClick={() => this.handleClick(id)}>Sell.</button>
+
 
                             </div>
                     </Link>)
