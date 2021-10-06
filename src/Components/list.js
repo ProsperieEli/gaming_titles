@@ -12,6 +12,8 @@ export default class List extends Component {
         const gamesOwned = await getGamesOwned();
         this.setState({ gamesOwned: gamesOwned })
     }
+
+    //Create a delete function to remove unneccessary items. Stretch.
     render() {
         const { gamesOwned } = this.state;
 
@@ -28,7 +30,7 @@ export default class List extends Component {
                         <div className="gaming-list">
                             <p>{name}</p>
                             <p>{genre}</p>
-                          
+                          <button onClick="remove-game">Sell.</button>
 
                             </div>
                     </Link>)
