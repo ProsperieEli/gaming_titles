@@ -23,7 +23,8 @@ export default class List extends Component {
         const { gamesOwned } = this.state;
 
         return (
-            <div className="gamesOwned">
+            <div className="games-list-container">
+            <div className="games-list">
                 {
                     gamesOwned.map(({
                         id,
@@ -32,15 +33,16 @@ export default class List extends Component {
                         owner_id,
                     }) => 
                     <Link to={`update/${id}`} key={`${name}-${id}`}>
-                        <div className="gaming-list">
-                            <p>{name}</p>
-                            <p>{genre}</p>
-                            <button onClick={() => this.handleClick(id)}>Sell.</button>
+                        <div className="game-info-container">
+                            <p className="name">{name}</p>
+                            <p className="genre">{genre}</p>
+                            <button className="button" onClick={() => this.handleClick(id)}>Sell.</button>
 
 
                             </div>
                     </Link>)
                 }
+            </div>
             </div>
         )
     }

@@ -28,7 +28,7 @@ export default class Create extends Component {
     render() {
        
         return (
-         <form onSubmit={this.handleSubmit}>
+         <form className="create" onSubmit={this.handleSubmit}>
              <label>
                  Name
              <input onChange = {(e) => this.setState({ name: e.target.value })} />

@@ -11,6 +11,7 @@ import Create from './Components/create';
 export default class App extends Component {
   render() {
     return (
+      
     <Router>
       <header>
         <NavLink to="/" className="Link"> Home</NavLink>
@@ -34,8 +35,12 @@ export default class App extends Component {
          exact
          render={(routerProps) => <Create {...routerProps} />}
          />
+         <div>
+        
+         </div>
       </Switch>
     </Router>
+  
     )
   }
 }
